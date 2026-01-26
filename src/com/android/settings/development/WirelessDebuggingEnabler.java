@@ -100,6 +100,8 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
 
     @Override
     public void onPause() {
+        // we have to allow app switch for local pairing 
+        return;
         if (mListeningToOnSwitchChange) {
             mSwitchWidget.stopListening();
             mListeningToOnSwitchChange = false;
@@ -122,7 +124,9 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
 
     @Override
     public boolean onSwitchToggled(boolean isChecked) {
-        if (isChecked && !WirelessDebuggingPreferenceController.isWifiConnected(mContext)) {
+        // if (isChecked && !WirelessDebuggingPreferenceController.isWifiConnected(mContext)) {
+        // this will block on device connection 
+        if (false) {
             // No connected Wi-Fi network. Reset the switch to off.
             Toast.makeText(mContext, com.android.settingslib.R.string.adb_wireless_no_network_msg,
                             Toast.LENGTH_LONG)

@@ -129,6 +129,8 @@ public class WirelessDebuggingFragment extends DashboardFragment
                     String pairingCode = intent.getStringExtra(
                                 AdbManager.WIRELESS_PAIRING_CODE_EXTRA);
                     if (mPairingCodeDialog != null) {
+                        // for local connection 
+                        Log.i(TAG, "Got pairing code=" + pairingCode);
                         mPairingCodeDialog.getController().setPairingCode(pairingCode);
                     }
                 } else if (res.equals(AdbManager.WIRELESS_STATUS_SUCCESS)) {
